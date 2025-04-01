@@ -1,0 +1,46 @@
+package deliveries;
+import java.util.Scanner;
+public class Deliveries {
+
+    public static void main(String[] args) {
+        Scanner kb = new Scanner(System.in);
+        int iTVnum;
+        int remTvs;
+        char cVehicleType;
+        int iNumTrip = 0;
+        final int VAN_CAPACITY = 120;
+        final int TRUCK_CAPACITY = 250;
+
+        System.out.print("Enter the number of TV's that must be transported: ");
+        iTVnum = kb.nextInt();
+        System.out.print("Eneter the type of vehicle you want to rent V/v for Van or T/t for Truck: ");
+        cVehicleType = kb.next().charAt(0);
+
+        Character.toLowerCase(cVehicleType);
+        if (cVehicleType == 'V' || iTVnum > VAN_CAPACITY) {
+            iNumTrip = iTVnum / VAN_CAPACITY;
+            remTvs = iTVnum % VAN_CAPACITY;
+            if (remTvs > 0) {
+                iNumTrip += iNumTrip;
+            }
+        } else if (cVehicleType == 'T' || iTVnum > VAN_CAPACITY) {
+            iNumTrip = iTVnum / TRUCK_CAPACITY;
+            remTvs = iTVnum % TRUCK_CAPACITY;
+            
+            if (remTvs > 0)
+            {
+                iNumTrip = iNumTrip;
+            }
+        }else 
+        {
+            System.out.println("invalid vehicle");
+        }if (iNumTrip > 1)
+        {
+            System.out.println("All TV's cannot be transported at once");
+            System.out.println("You will need "+iNumTrip+" trips");
+        }else 
+        {
+            System.out.println("All the TV's can be transported in one trip");
+        }
+    }
+}
